@@ -14,6 +14,10 @@ async function getAllSongs(){
     return await Song.find({});
 }
 
+async function getSongByName(name){
+    return await songSchema.find({name: name});
+}
+
 async function addSong(song){
     var newSong = new Song(song);
     await newSong.save();

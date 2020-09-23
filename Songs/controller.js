@@ -4,11 +4,16 @@ async function findAllSongs(){
     return await model.getAllSongs();
 }
 
+async function getSongByName(nameSong){
+    return await model.getSongByName(nameSong);
+}
+
 async function addSong(song){
     return await model.addSong(song);
 }
 
 module.exports = {
     findAllSongs,
-    addSong
+    addSong,
+    getSongByName
 }
