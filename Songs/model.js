@@ -25,5 +25,6 @@ async function addSong(song){
 
 module.exports = {
     getAllSongs,
-    addSong
+    addSong,
+    getSongByName
 }

@@ -1,6 +1,6 @@
 const express = require('express');
-//const songsRoute = require('');
-//const usersRoute = require('');
+const songsRoute = require('');
+const usersRoute = require('');
 
 var server = express();
 server.use(express.json());

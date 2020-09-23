@@ -1,9 +1,5 @@
 const songsController = require('./controller.js');
-const express = require('express');
-const server = express();
-server.use(express.json());
-server.listen(5000);
-console.log(server.listen());
+
 // Obtiene toda la lista de canciones de la db
 async function getSongs(req, res){
     try {
@@ -14,7 +10,7 @@ async function getSongs(req, res){
     }
 }
 // Obtiene la cancion por su nombre
-async function getSongByName(req, res){
+async function songByName(req, res){
     try {
         var songs = songsController.getSongByName(req.params.name);
         res.status(200).send(songs);
