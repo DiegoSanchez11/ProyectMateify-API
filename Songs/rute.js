@@ -34,8 +34,9 @@ async function postSong(req, res){
 // Elimina la Candion de la Base de datos
 async function deleteSong(req, res){
     try {
-        await songsController.songDeleted(req.body);
-        res.status().send('Se elimino la cancion correctamente');
+        var id = req.body._id;
+        await songsController.songDeleted(id);
+        res.status(200).send('Se elimino la cancion correctamente');
     } catch (e) {
         res.status(500).send('No se encontro la cancion a eliminar ' + e);
     }

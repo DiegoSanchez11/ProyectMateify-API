@@ -11,11 +11,18 @@ const userSchema = new Schema({
 
 const User = mongoose.model('User', userSchema)
 
+// Obtiene todos los usuarios
 async function getAllUsers(){
     return await User.find({});
 }
 
+// Agrega y guarda el usuario en la db
+async function newUser(user){
+    var saveUser = new User(user);
+    await saveUser.save();
+}
 
 module.exports = {
-    getAllUsers
+    getAllUsers,
+    newUser
 }

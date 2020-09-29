@@ -28,9 +28,9 @@ async function newSong(song){
 }
 
 // Busca la cancion a eliminar
-async function selectedSong(name){
-    var songDel = Song.find({name: name});
-    return await (songDel);
+async function selectedSong(idForDelete){
+    const findSongForDelete = Song.findByIdAndRemove({_id: idForDelete});
+    return findSongForDelete;
 }
 
 

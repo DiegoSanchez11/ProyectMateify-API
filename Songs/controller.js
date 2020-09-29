@@ -16,8 +16,8 @@ async function addSong(song){
 }
 
 // Elimina la cancion
-async function songDeleted(name){
-    return await model.selectedSong(name);
+async function songDeleted(id){
+    return await model.selectedSong(id);
 }
 
 module.exports = {
