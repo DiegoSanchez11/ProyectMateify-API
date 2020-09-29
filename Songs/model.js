@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = require('mongoose.Schema');
+const Schema = mongoose.Schema;
 
 const songSchema = new Schema({
     name:String,
@@ -8,23 +8,36 @@ const songSchema = new Schema({
     artist:String
 });
 
-const Song = mongoose.model('Songs', songSchema);
+const Song = mongoose.model('Song', songSchema);
 
+// Busca las canciones en la db
 async function getAllSongs(){
     return await Song.find({});
 }
 
-async function getSongByName(name){
-    return await songSchema.find({name: name});
+// Busca en el body la req del POST
+async function getSongName(name){
+    const findSong =Song.find({name: name});
+    return findSong;
 }
 
-async function addSong(song){
-    var newSong = new Song(song);
-    await newSong.save();
+// Agrega y guarda la cancion en la db
+async function newSong(song){
+    var saveSong = new Song(song);
+    await saveSong.save();
 }
+
+// Busca la cancion a eliminar
+async function selectedSong(name){
+    var songDel = Song.find({name: name});
+    return await (songDel);
+}
+
 
 module.exports = {
     getAllSongs,
-    addSong,
-    getSongByName
+    getSongName,
+    newSong,
+    selectedSong
 }
+    

@@ -1,19 +1,28 @@
 const model = require('./model.js');
 
+// Obtiene todas las canciones de la db
 async function findAllSongs(){
     return await model.getAllSongs();
 }
 
-async function getSongByName(nameSong){
-    return await model.getSongByName(nameSong);
+// Valida que el req reciva los datos del body
+async function findSongByName(name){
+    return await model.getSongName(name);
 }
 
+// Agrega una cancion a la db
 async function addSong(song){
-    return await model.addSong(song);
+    return await model.newSong(song);
+}
+
+// Elimina la cancion
+async function songDeleted(name){
+    return await model.selectedSong(name);
 }
 
 module.exports = {
     findAllSongs,
+    findSongByName,
     addSong,
-    getSongByName
+    songDeleted
 }

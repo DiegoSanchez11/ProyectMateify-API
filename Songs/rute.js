@@ -9,26 +9,41 @@ async function getSongs(req, res){
         res.status(500).send('Hubo un error' + e);
     }
 }
+
 // Obtiene la cancion por su nombre
-async function songByName(req, res){
+async function getSongByName(req, res){
     try {
-        var songs = songsController.getSongByName(req.params.name);
-        res.status(200).send(songs);
+        let name = req.params.name;
+        const songName = await songsController.findSongByName(name);
+        res.status(200).send(songName); 
     } catch (e) {
-        res.status(500).send('No se ha encontrado la cancion' + e);
+        res.status(500).send('No se encontro la cancion en la Base de datos ' + e)
     }
 }
+
 // Agrega una nueva cancion a la db
 async function postSong(req, res){
     try {
         await songsController.addSong(req.body);
-        res.status(201).send('La cancion se agrego con exito')
+        res.status(201).send('La cancion se agrego con exito');
     } catch (e) {
-        res.status(404).send('No se encontro el archivo' + e)
+        res.status(404).send('No se encontro el archivo' + e);
+    }
+}
+
+// Elimina la Candion de la Base de datos
+async function deleteSong(req, res){
+    try {
+        await songsController.songDeleted(req.body);
+        res.status().send('Se elimino la cancion correctamente');
+    } catch (e) {
+        res.status(500).send('No se encontro la cancion a eliminar ' + e);
     }
 }
 
 module.exports = {
     getSongs,
-    postSong
+    getSongByName,
+    postSong,
+    deleteSong
 }
