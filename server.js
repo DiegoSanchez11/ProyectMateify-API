@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cros = require('cros');
+const cors = require('cors');
 
 //DATE
 const songsRoute = require('./Songs/rute.js');
@@ -16,7 +16,7 @@ mongoose.connect(Songs, {
 
 var server = express();
 server.use(express.json());
-server.use(cros());
+server.use(cors());
 server.listen(process.env.PORT);
 console.log('Server started');
 
