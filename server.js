@@ -18,7 +18,7 @@ var server = express();
 server.use(express.json());
 server.use(cros());
 server.listen(process.env.PORT);
-console.log('Server host in port 5000');
+console.log('Server started');
 
 //Songs
 server.get('/songs', songsRoute.getSongs);
