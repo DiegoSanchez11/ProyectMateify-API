@@ -33,11 +33,17 @@ async function selectedSong(idForDelete){
     return findSongForDelete;
 }
 
+// Modifica los valores de la canion por el body
+async function getSongForEdit(songEditing, songModify){
+    const saveModifySong = Song.findOneAndUpdate({name: songEditing}, songModify);
+    await saveModifySong.save();
+}
 
 module.exports = {
     getAllSongs,
     getSongName,
     newSong,
-    selectedSong
+    selectedSong,
+    getSongForEdit
 }
     

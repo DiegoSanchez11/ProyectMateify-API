@@ -42,9 +42,22 @@ async function deleteSong(req, res){
     }
 }
 
+// Edita los datos de la Song
+async function putSong(req, res){
+    try {
+        var songEditing = req.params.name;
+        var songModify = req.body;
+        const modifySong = await songsController.editSong(songEditing, songModify);
+        res.status(200).send(modifySong);
+    } catch (e) {
+        res.status(500).send('No se pudo modificar la cancion ' + e,);
+    }
+}
+
 module.exports = {
     getSongs,
     getSongByName,
     postSong,
-    deleteSong
+    deleteSong,
+    putSong
 }

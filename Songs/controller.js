@@ -20,9 +20,15 @@ async function songDeleted(id){
     return await model.selectedSong(id);
 }
 
+// Modifica la cancion
+async function editSong(songEditing, songModify){
+    return await model.getSongForEdit(songEditing, songModify);
+}
+
 module.exports = {
     findAllSongs,
     findSongByName,
     addSong,
-    songDeleted
+    songDeleted,
+    editSong
 }
