@@ -38,10 +38,9 @@ const userModBD = async (nameMod, songMod) => {
 // Fav Song
 async function getFavUserSongName(username, songname){
     const user = await User.findOne({firstName: username});
+    console.log(user);
     user.likedSongs.push(songname);
     await user.save();
-
-
 }
 
 
