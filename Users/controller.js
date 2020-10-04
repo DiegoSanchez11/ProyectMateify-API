@@ -20,9 +20,15 @@ const modifyUseCont = async (nameMod, songMod) => {
     return await model.userModBD(nameMod, songMod);
 };
 
+// FavSong 
+async function addFavouriteSong(username, songname) {
+    return await model.getFavUserSongName(username, songname);
+}
+
 module.exports = {
     findAllUsers,
     addUser,
     userDeleted,
-    modifyUseCont
+    modifyUseCont,
+    addFavouriteSong
 }

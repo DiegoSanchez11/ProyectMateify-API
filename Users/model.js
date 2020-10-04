@@ -13,7 +13,7 @@ const User = mongoose.model('User', userSchema)
 
 // Obtiene todos los usuarios
 async function getAllUsers() {
-    return await User.find({});
+    return await User.find({}).populate('likedSongs');
 }
 
 // Agrega y guarda el usuario en la db
@@ -35,9 +35,20 @@ const userModBD = async (nameMod, songMod) => {
 
 }
 
+// Fav Song
+async function getFavUserSongName(username, songname){
+    const user = await User.findOne({firstName: username});
+    user.likedSongs.push(songname);
+    await user.save();
+
+
+}
+
+
 module.exports = {
     getAllUsers,
     newUser,
     selectedUser,
-    userModBD
+    userModBD,
+    getFavUserSongName
 }

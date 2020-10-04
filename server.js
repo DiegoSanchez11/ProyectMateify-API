@@ -32,3 +32,5 @@ server.get('/users', usersRoute.getUsers);
 server.post('/users', usersRoute.postUser);
 server.delete('/users', usersRoute.deleteUser);
 server.put('/users/:name', usersRoute.modifyUser);
+//FavSongs
+server.post('/users/:username', usersRoute.addFavSong);
