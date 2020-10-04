@@ -44,6 +44,7 @@ module.exports = {
     getSongName,
     newSong,
     selectedSong,
-    getSongForEdit
+    getSongForEdit,
+    Song
 }
     

@@ -48,7 +48,7 @@ async function addFavSong(req, res) {
         var username = req.params.firstName;
         var songname = req.body;
         const favSong = await usersController.addFavouriteSong(username, songname);
-        res.status(200).send('Se agrego la cancion a favoritos del usuario ', favSong);
+        res.status(200).send(favSong);
     } catch (e) {
         res.status(500).send('No se pudo agregar la cancion a favoritos del usuario ', e);
     }
