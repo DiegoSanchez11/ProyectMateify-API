@@ -45,7 +45,7 @@ async function modifyUser(req, res) {
 
 async function addFavSong(req, res) {
     try {
-        var username = req.params.firstName;
+        var username = req.params.username;
         var songname = req.body;
         const favSong = await usersController.addFavouriteSong(username, songname);
         res.status(200).send(favSong);
